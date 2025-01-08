@@ -5,5 +5,6 @@
     <label>Адрес <input type="text" name="adress"></label>
     <label>Телефон <input type="text" name="phone"></label>
     <label>Читательский билет <input type="text" name="ticket_number"></label>
+    <label>Читательский билет <input type="text" name="ticket_number"></label>
     <button>Зарегистрировать</button>
 </form>
