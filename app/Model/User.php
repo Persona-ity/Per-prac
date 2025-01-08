@@ -36,7 +36,10 @@ class User extends Model implements IdentityInterface
     {
         return $this->id;
     }
-
+    public function books()
+    {
+        return $this->hasMany(UserBook::class);
+    }
     //Возврат аутентифицированного пользователя
     public function attemptIdentity(array $credentials)
     {
