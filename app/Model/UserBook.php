@@ -9,6 +9,11 @@ class UserBook extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $fillable = [
+        'id_book',
+        'id_user'
+    ];
+    protected $table = 'user_books';
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -18,4 +23,5 @@ class UserBook extends Model
     {
         return $this->belongsTo(Book::class);
     }
+
 }

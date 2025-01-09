@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Model\UserBook;
 use Src\Request;
 use Model\Book;
 use Src\View;
@@ -28,6 +29,16 @@ class LibraryController
         if ($request->method === 'POST' && Book::create($request->all())) {
             app()->route->redirect('/login');
         }
-        return new View('site.libraryUser');
+        return new View('site.createBooks');
+    }
+    public function userBooks(Request $request): string
+    {
+        $users = User::all();
+        $books = Book::all();
+        if ($request->method === 'POST' && UserBook::create($request->all())) {
+            app()->route->redirect('/hello');
+        }
+
+        return new View('site.userBooks', ['users' => $users, 'books' => $books]);
     }
 }
