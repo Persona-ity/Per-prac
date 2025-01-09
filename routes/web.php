@@ -11,3 +11,4 @@ Route::add(['GET', 'POST'], '/createLibrary', [Controller\AdminController::class
 Route::add(['GET', 'POST'], '/createReader', [Controller\LibraryController::class, 'signupReader']);
 Route::add(['GET', 'POST'], '/createBook', [Controller\LibraryController::class, 'createBook']);
 Route::add(['GET', 'POST'], '/userBooks', [Controller\LibraryController::class, 'userBooks']);
+Route::add(['GET', 'POST'], '/view', [Controller\LibraryController::class, 'index']);

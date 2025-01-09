@@ -11,12 +11,20 @@ use Src\Auth\Auth;
 
 class LibraryController
 {
+//    public function index(Request $request): string
+//    {
+//        $books = Book::all();
+//        $users = User::all();
+//        $userBooks = UserBook::all();
+//        return (new View())->render('site.viewUserBooks', ['userBooks' => $userBooks,'users'=> $users,'books' => $books]);
+//    }
     public function index(Request $request): string
     {
-        $posts = Post::where('id', $request->id)->get();
-        return (new View())->render('site.post', ['posts' => $posts]);
-    }
+        // Получаем все записи UserBook с подгруженными пользователями и книгами
+        $userBooks = UserBook::with(['user', 'books'])->get();
 
+        return (new View())->render('site.viewUserBooks', ['userBooks' => $userBooks]);
+    }
     public function signupReader(Request $request): string
     {
         if ($request->method === 'POST' && User::create($request->all())) {
@@ -41,4 +49,5 @@ class LibraryController
 
         return new View('site.userBooks', ['users' => $users, 'books' => $books]);
     }
+
 }
