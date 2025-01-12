@@ -10,6 +10,11 @@ use Src\Auth\Auth;
 
 class Site
 {
+    public function redirectToLogin()
+    {
+        header('Location: ' . app()->route->getUrl('/login'));
+        exit;
+    }
     public function index(Request $request): string
     {
         $posts = Post::where('id', $request->id)->get();
